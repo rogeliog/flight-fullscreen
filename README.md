@@ -1,8 +1,10 @@
 # flight-fullscreen
 
-[![Build Status](https://secure.travis-ci.org/<username>/flight-fullscreen.png)](http://travis-ci.org/<username>/flight-fullscreen)
+A [Flight](https://github.com/flightjs/flight) component for the HTML5 [fullscreen](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0CEsQFjAE&url=https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FWeb%2FGuide%2FDOM%2FUsing_full_screen_mode&ei=rDHgUfSQOa_liwK4t4DwAQ&usg=AFQjCNHFEa21FtnSHY241HtGflXgc7m0NQ&bvm=bv.49260673,d.cGE) API
 
-A [Flight](https://github.com/flightjs/flight) component for…
+Don't worry about cross browser compatibility, that is out job not yours.
+
+This component is highly inspired in [screenfull.js](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCwQFjAA&url=https%3A%2F%2Fgithub.com%2Fsindresorhus%2Fscreenfull.js%2F&ei=-zPgUY-aFofjiAKNkoCgCw&usg=AFQjCNEIBbX6cIz4701dpgN94aN5EELSow&bvm=bv.49260673,d.cGE), an awesome JavaScript fullscreen library.
 
 ## Installation
 
@@ -12,7 +14,52 @@ bower install --save flight-fullscreen
 
 ## Example
 
-…
+
+### Feature detection
+
+`fullscreen-supported` will trigger when the feature is supported
+
+`fullscreen-unsupported` will trigger when the feature is not supported
+
+
+### Use it
+
+```javascript
+define(function (require) {
+
+  'use strict';
+
+  /**
+   * Module dependencies
+   */
+
+  var fullscreener = require('component/fullscreener');
+
+  /**
+   * Module exports
+   */
+
+  return initialize;
+
+  /**
+   * Module function
+   */
+
+  function initialize() {
+
+    fullscreener.attachTo('video', {
+      requestEvents: ['click', 'click2'], // Events that will request fullscreen.
+      exitEvents: ['other-event'], // Event that will exit fullscreen.
+    });
+
+    fullscreener.attachTo('#the-button', {
+      toggleEvents: ['click'], // Events that toggle fullscreen.
+      target: '#img-wrapper' // You can specify different target.
+    });
+  }
+});
+```
+
 
 ## Development
 
