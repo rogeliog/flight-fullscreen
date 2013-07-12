@@ -29,30 +29,18 @@ define(function (require) {
 
   'use strict';
 
-  /**
-   * Module dependencies
-   */
-
-  var fullscreener = require('component/fullscreener');
-
-  /**
-   * Module exports
-   */
+  var fullscreen = require('component/fullscreen');
 
   return initialize;
 
-  /**
-   * Module function
-   */
-
   function initialize() {
 
-    fullscreener.attachTo('video', {
+    fullscreen.attachTo('video', {
       requestEvents: ['click', 'click2'], // Events that will request fullscreen.
       exitEvents: ['other-event'], // Event that will exit fullscreen.
     });
 
-    fullscreener.attachTo('#the-button', {
+    fullscreen.attachTo('#the-button', {
       toggleEvents: ['click'], // Events that toggle fullscreen.
       target: '#img-wrapper' // You can specify different target.
     });
