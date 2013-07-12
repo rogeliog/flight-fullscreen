@@ -46,9 +46,15 @@ define(function (require) {
     });
 
     this.after('initialize', function () {
-      this.on(this.attr.requestEvents.join(' '), this.requestFullscreen);
-      this.on(this.attr.exitEvents.join(' '), this.exitFullscreen);
-      this.on(this.attr.toggleEvents.join(' '), this.toggleFullscreen);
+
+      if (this.crossBrowser.requestFullscreen) {
+        this.trigger('fullscreen-supported');
+        this.on(this.attr.requestEvents.join(' '), this.requestFullscreen);
+        this.on(this.attr.exitEvents.join(' '), this.exitFullscreen);
+        this.on(this.attr.toggleEvents.join(' '), this.toggleFullscreen);
+      } else {
+        this.trigger('fullscreen-unsupported');
+      }
     });
 
     this.setupCrossBrowserSupport = function () {
